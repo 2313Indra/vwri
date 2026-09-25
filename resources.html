@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Village Water Resilience Index (VWRI)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MathJax for rendering mathematical equations -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">VWRI Index</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="framework.html">Framework</a></li>
+                <li><a href="methodology.html">Methodology</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="calculator.html" class="calculator-btn">Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Resources & Standards</h1>
+            <p class="subtitle">Primary Data Sources, Reference Standards, and Methodologies</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="resources-content" style="padding: 4rem 0;">
+        <div class="container" style="max-width: 1000px;">
+            
+            <!-- Primary Data Sources Section -->
+            <section class="content-section fade-in" style="margin-bottom: 3.5rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">Primary Data Sources</h2>
+                <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+                    
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-water" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Groundwater Monitoring</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">Central Ground Water Board (CGWB) piezometric network, India-WRIS, and State Ground Water Department records.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-faucet" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Jal Jeevan Mission (JJM)</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">JJM Integrated Management Information System (IMIS) and PHED tap-connection registers.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-flask" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Water Testing Laboratories</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">Public Health Water Testing Laboratory records (chemical and microbiological, per BIS 10500:2012).</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-cloud-sun-rain" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Meteorological Records</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">India Meteorological Department (IMD) rain-gauge and temperature station records ($\ge 20$-year series).</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-industry" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Supply & Asset Registers</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">Gujarat Water Supply & Sewerage Board (GWSSB) and Gram Panchayat infrastructure asset registers.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-users" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Demographic & Socio-economic</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">Census / Socio-Economic Caste Census (SECC) and household socio-economic surveys.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-paw" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Livestock Census</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">Livestock Census (Department of Animal Husbandry & Dairying) and local village surveys.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-house-chimney-crack" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">Disaster Management (DDMA)</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">District Disaster Management Authority (DDMA) post-disaster functionality surveys and asset damage records.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-clipboard-check" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">VWSC & Pani Samiti Records</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">Village Water and Sanitation Committee (VWSC) / Pani Samiti attendance, O&M, and governance registers.</p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.5rem;">
+                        <i class="fas fa-map-location-dot" style="font-size: 1.6rem; color: var(--primary-color); margin-bottom: 0.75rem;"></i>
+                        <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: #1e293b;">GIS & Remote Sensing</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">GIS / remote-sensing based village-boundary, waterbody, and pipeline-network mapping.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Reference Standards & Methodologies Section -->
+            <section class="content-section fade-in" style="margin-bottom: 3.5rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">Reference Standards & Methodologies</h2>
+                <div class="vwri-table-wrapper">
+                    <table class="vwri-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Standard / Methodology</th>
+                                <th style="width: 70%;">Description & Application in VWRI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>BIS 10500:2012</strong></td>
+                                <td>Indian Standard for Drinking Water Specification — used as baseline for chemical and biological water-quality thresholds and safe drinking water compliance.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GEC-2015 Methodology</strong></td>
+                                <td>Groundwater Estimation Committee methodology for Dynamic Groundwater Resource Assessment, guiding groundwater recharge and draft evaluation.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Falkenmark Water Stress Index</strong></td>
+                                <td>Standard index for water availability per capita, applying the $1,700 \text{ m}^3\text{/capita/year}$ benchmark for water stress.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Standardized Precipitation Index (SPI)</strong></td>
+                                <td>Meteorological drought index methodology recommended by WMO (World Meteorological Organization) and McKee et al. (1993), fitted to long-term rainfall series.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CEA Baseline & IPCC Factors</strong></td>
+                                <td>Central Electricity Authority (CEA) $\text{CO}_2$ baseline database and IPCC emission-factor guidelines for calculating greenhouse gas mitigation in water pumping and distribution.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Publications Section -->
+            <section class="content-section fade-in" style="margin-bottom: 3.5rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">Research Publications</h2>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Harnessing Citizen Science to Measure Water-Sensitivity in Indian Urban Landscapes</h3>
+                        <p class="authors">Tripathi, I. M., Mohapatra, P. K., & Kansal, M. L.</p>
+                        <p class="journal">Available at SSRN 5153808</p>
+                    </div>
+                    <div class="publication-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Resource to risk: Inter-decadal and sub-seasonal rainfall modulation over Saurashtra region in Western India</h3>
+                        <p class="authors">Parmar, B., Shah, S., Shastri, H., & Tripathi, I. M.</p>
+                        <p class="journal">HydroResearch (2025)</p>
+                    </div>
+                    <div class="publication-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Hydrologic-hydraulic response of swales to stormwater runoff</h3>
+                        <p class="authors">Bhat, A. M., Mohapatra, P. K., & Tripathi, I. M.</p>
+                        <p class="journal">Total Environment Advances, 200118 (2024)</p>
+                    </div>
+                    <div class="publication-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Towards Green Stormwater Infrastructure: A Review of the Hydraulics of Curb Inlets in Stormwater Management</h3>
+                        <p class="authors">Bhat, A. M., Mohapatra, P. K., & Tripathi, I. M.</p>
+                        <p class="journal">Next Research, 100251 (2025)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQs Section -->
+            <section class="content-section fade-in">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <h3>What is the Village Water Resilience Index (VWRI)?</h3>
+                        <p>VWRI is a composite, indicator-based framework designed for Indian villages (anchored in Gujarat) to evaluate water resilience across five realms: Hydrological, Infrastructure, Water Quality, Climate, and Socio-economic.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3>How are raw indicator values converted to scores?</h3>
+                        <p>Raw values in physical units are first normalized to a 0–100 scale using min–max normalization (reversing direction for negative indicators). They are also rated on a 5-tier benchmark scale (Very Low to Very High) anchored to national standards.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3>How are Realm and Composite scores calculated?</h3>
+                        <p>Each Realm score is the weighted average of its normalized indicators. The Composite VWRI is computed using fixed realm weights: $\text{VWRI} = 0.30\text{H} + 0.20\text{I} + 0.15\text{WQ} + 0.15\text{C} + 0.20\text{SE}$.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3>How can Gram Panchayats and Pani Samitis use this?</h3>
+                        <p>Gram Panchayats, VWSCs/Pani Samitis, and line departments can identify exact vulnerabilities, track improvements across consecutive years, justify funding allocations, and align with Jal Jeevan Mission goals.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <h3>Village Water Resilience</h3>
+                    <p class="footer-tagline">W4C — Water for Communities | A Composite Framework for Assessing Village-Level Water Resilience.</p>
+                    <p class="footer-affil"><i class="fas fa-university"></i> Department of Civil Engineering, IIT Gandhinagar</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Framework</h3>
+                    <ul class="footer-links">
+                        <li><a href="framework.html">Five Realms</a></li>
+                        <li><a href="methodology.html">34 Indicators</a></li>
+                        <li><a href="methodology.html#benchmarks">Benchmark Scales</a></li>
+                        <li><a href="calculator.html">VWRI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About VWRI</a></li>
+                        <li><a href="benefits.html">Key Benefits</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="team.html">Research Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-section">
+                    <h3>Connect With Us</h3>
+                    <p class="footer-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:pranabm@iitgn.ac.in">pranabm@iitgn.ac.in</a></p>
+                    <p class="footer-contact-item"><i class="fas fa-location-dot"></i> <span>Gandhinagar, Gujarat, India</span></p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/indra-mani-tripathi-08b96418b/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=vZAHrksAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://www.researchgate.net/profile/Indra-Tripathi" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Village Water Resilience Index (VWRI). Developed at IIT Gandhinagar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

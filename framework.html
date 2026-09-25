@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework - Village Water Resilience Index (VWRI)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MathJax for rendering mathematical equations -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">VWRI Index</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="framework.html" class="active">Framework</a></li>
+                <li><a href="methodology.html">Methodology</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="calculator.html" class="calculator-btn">Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>The VWRI Framework</h1>
+            <p class="subtitle">Five Realms of Resilience and 34 Indicators</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="framework-content" style="padding: 4rem 0;">
+        <div class="container" style="max-width: 1000px;">
+            <!-- Core Structure Section -->
+            <section class="content-section fade-in" style="margin-bottom: 3rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">Framework Structure</h2>
+                <div class="text-content">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #334155; margin-bottom: 2rem;">
+                        <strong>VWRI</strong> is organised into <strong>five Realms of resilience</strong>, each assigned a fixed weight reflecting its relative contribution to overall village water resilience. Together the Realms draw on <strong>34 indicators</strong>.
+                    </p>
+                </div>
+
+                <!-- Realm Summary Table -->
+                <div class="vwri-table-wrapper">
+                    <table class="vwri-table" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Realm</th>
+                                <th>Weight</th>
+                                <th>Indicators</th>
+                                <th style="text-align: left;">Scope / Key Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: left; font-weight: 600;"><i class="fas fa-water" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Hydrological</td>
+                                <td><span class="resilience-badge badge-high" style="font-size: 0.95rem;">0.30</span></td>
+                                <td><strong>8</strong> indicators</td>
+                                <td style="text-align: left;">Groundwater condition, recharge, source density & availability</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; font-weight: 600;"><i class="fas fa-faucet" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Infrastructure</td>
+                                <td><span class="resilience-badge badge-high" style="font-size: 0.95rem;">0.20</span></td>
+                                <td><strong>9</strong> indicators</td>
+                                <td style="text-align: left;">Coverage, storage, reliability & pipeline network condition</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; font-weight: 600;"><i class="fas fa-flask" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Water Quality</td>
+                                <td><span class="resilience-badge badge-high" style="font-size: 0.95rem;">0.15</span></td>
+                                <td><strong>4</strong> indicators</td>
+                                <td style="text-align: left;">Chemical & biological safety of drinking water and seasonal stability</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; font-weight: 600;"><i class="fas fa-cloud-sun-rain" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Climate</td>
+                                <td><span class="resilience-badge badge-high" style="font-size: 0.95rem;">0.15</span></td>
+                                <td><strong>7</strong> indicators</td>
+                                <td style="text-align: left;">Rainfall variability, drought exposure, warming trend & emissions</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left; font-weight: 600;"><i class="fas fa-users" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Socio-economic</td>
+                                <td><span class="resilience-badge badge-high" style="font-size: 0.95rem;">0.20</span></td>
+                                <td><strong>6</strong> indicators</td>
+                                <td style="text-align: left;">Household income, livestock dependency, migration & governance</td>
+                            </tr>
+                            <tr style="background: #f8fafc; font-weight: 700;">
+                                <td style="text-align: left;">Total</td>
+                                <td><span class="resilience-badge badge-very-high">1.00</span></td>
+                                <td>34 indicators</td>
+                                <td style="text-align: left;">Comprehensive Village-Level Water Resilience Index</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Detailed Realm Breakdown Cards -->
+            <section class="content-section fade-in" style="margin-bottom: 3rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.5rem;">The Five Realms</h2>
+                <div class="features-grid" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    
+                    <div class="benefit-card" style="margin: 0; padding: 1.75rem; border-left: 5px solid #0284c7;">
+                        <h3 style="color: #0284c7; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fas fa-water" style="margin-right: 0.5rem;"></i> Hydrological Resilience</span>
+                            <span style="font-size: 0.9rem; font-weight: 600; color: #475569;">Weight 0.30 &nbsp;|&nbsp; 8 indicators</span>
+                        </h3>
+                        <p style="color: #334155; line-height: 1.7; margin: 0;">
+                            Groundwater condition, recharge, source density and availability of water at the village level.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.75rem; border-left: 5px solid #0d9488;">
+                        <h3 style="color: #0d9488; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fas fa-faucet" style="margin-right: 0.5rem;"></i> Infrastructure Resilience</span>
+                            <span style="font-size: 0.9rem; font-weight: 600; color: #475569;">Weight 0.20 &nbsp;|&nbsp; 9 indicators</span>
+                        </h3>
+                        <p style="color: #334155; line-height: 1.7; margin: 0;">
+                            Coverage, storage, reliability and physical condition of water-supply infrastructure.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.75rem; border-left: 5px solid #2563eb;">
+                        <h3 style="color: #2563eb; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fas fa-flask" style="margin-right: 0.5rem;"></i> Water Quality Resilience</span>
+                            <span style="font-size: 0.9rem; font-weight: 600; color: #475569;">Weight 0.15 &nbsp;|&nbsp; 4 indicators</span>
+                        </h3>
+                        <p style="color: #334155; line-height: 1.7; margin: 0;">
+                            Chemical and biological safety of drinking water and its stability across seasons.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.75rem; border-left: 5px solid #e11d48;">
+                        <h3 style="color: #e11d48; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fas fa-cloud-sun-rain" style="margin-right: 0.5rem;"></i> Climate Resilience</span>
+                            <span style="font-size: 0.9rem; font-weight: 600; color: #475569;">Weight 0.15 &nbsp;|&nbsp; 7 indicators</span>
+                        </h3>
+                        <p style="color: #334155; line-height: 1.7; margin: 0;">
+                            Rainfall variability, drought exposure, warming trend and mitigation of water-related emissions.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card" style="margin: 0; padding: 1.75rem; border-left: 5px solid #7c3aed;">
+                        <h3 style="color: #7c3aed; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                            <span><i class="fas fa-users" style="margin-right: 0.5rem;"></i> Socio-economic Resilience</span>
+                            <span style="font-size: 0.9rem; font-weight: 600; color: #475569;">Weight 0.20 &nbsp;|&nbsp; 6 indicators</span>
+                        </h3>
+                        <p style="color: #334155; line-height: 1.7; margin: 0;">
+                            Household income, dependency on shared water resources, migration and community governance.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Composite Score Section -->
+            <section class="content-section fade-in" style="margin-bottom: 2rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">Composite Score Calculation</h2>
+                <div class="formula-card" style="background: white; border-left: 5px solid var(--primary-color); padding: 1.75rem;">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 1rem;">
+                        The final composite index combines all five Realms using their respective weights:
+                    </p>
+                    <div class="formula-math" style="font-size: 1.35rem; margin-bottom: 1rem; text-align: center;">
+                        $$\text{VWRI} = 0.30 \times \text{Hydrological} + 0.20 \times \text{Infrastructure} + 0.15 \times \text{Water Quality} + 0.15 \times \text{Climate} + 0.20 \times \text{Socio-economic}$$
+                    </div>
+                    <p style="font-size: 0.95rem; color: #64748b; text-align: center; margin: 0;">
+                        <em>(Realm weights sum to 1.00: &nbsp;$0.30 + 0.20 + 0.15 + 0.15 + 0.20 = 1.00$)</em>
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <h3>Village Water Resilience</h3>
+                    <p class="footer-tagline">W4C — Water for Communities | A Composite Framework for Assessing Village-Level Water Resilience.</p>
+                    <p class="footer-affil"><i class="fas fa-university"></i> Department of Civil Engineering, IIT Gandhinagar</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Framework</h3>
+                    <ul class="footer-links">
+                        <li><a href="framework.html">Five Realms</a></li>
+                        <li><a href="methodology.html">34 Indicators</a></li>
+                        <li><a href="methodology.html#benchmarks">Benchmark Scales</a></li>
+                        <li><a href="calculator.html">VWRI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About VWRI</a></li>
+                        <li><a href="benefits.html">Key Benefits</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="team.html">Research Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-section">
+                    <h3>Connect With Us</h3>
+                    <p class="footer-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:pranabm@iitgn.ac.in">pranabm@iitgn.ac.in</a></p>
+                    <p class="footer-contact-item"><i class="fas fa-location-dot"></i> <span>Gandhinagar, Gujarat, India</span></p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/indra-mani-tripathi-08b96418b/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=vZAHrksAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://www.researchgate.net/profile/Indra-Tripathi" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Village Water Resilience Index (VWRI). Developed at IIT Gandhinagar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

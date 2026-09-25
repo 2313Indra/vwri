@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology - Village Water Resilience Index (VWRI)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MathJax for rendering mathematical equations -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">VWRI Index</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="framework.html">Framework</a></li>
+                <li><a href="methodology.html" class="active">Methodology</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="calculator.html" class="calculator-btn">Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Development & Methodology</h1>
+            <p class="subtitle">Normalization, Aggregation, Indicator Formulae, and Benchmark Scales</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="methodology-content" style="padding: 4rem 0;">
+        <div class="container">
+            
+            <!-- 1. Normalization Procedure -->
+            <section class="content-section fade-in" style="margin-bottom: 3rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">1. Normalization Procedure</h2>
+                <div class="text-content">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 1.5rem;">
+                        Because raw VWRI variables are measured in heterogeneous units (metres, litres, percentages, counts, INR, etc.), each indicator is first converted to a common <strong>0–100 scale</strong> using min–max normalization before aggregation.
+                    </p>
+
+                    <div class="formula-card">
+                        <div class="formula-title">For “Positive” Indicators (higher raw value $X$ = better resilience):</div>
+                        <div class="formula-math">
+                            $$S_i = \left[ \frac{X - X_{min}}{X_{max} - X_{min}} \right] \times 100$$
+                        </div>
+                    </div>
+
+                    <div class="formula-card">
+                        <div class="formula-title">For “Negative” Indicators (lower raw value = better resilience, e.g. groundwater depth, breakdown frequency, rainfall variability):</div>
+                        <div class="formula-math">
+                            $$S_i = \left[ \frac{X_{max} - X}{X_{max} - X_{min}} \right] \times 100$$
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; color: #64748b; margin-top: 1rem;">
+                        $X_{min}$ and $X_{max}$ are the minimum and maximum values of that indicator observed across the comparison set of villages, or fixed benchmark/standard values.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. Realm Scores -->
+            <section class="content-section fade-in" style="margin-bottom: 3rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">2. Realm (Pillar) Scores</h2>
+                <div class="text-content">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 1.25rem;">
+                        Each Realm score is the weighted average of its normalized indicator scores:
+                    </p>
+
+                    <div class="formula-card">
+                        <div class="formula-title">Realm Score Formulation</div>
+                        <div class="formula-math">
+                            $$\text{Realm Score} = \sum (w_i \times S_i), \quad \text{where } \sum w_i = 1 \text{ within the Realm}$$
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; color: #64748b; margin-top: 1rem;">
+                        Indicator weights ($w_i$) within each Realm are assigned equally by default, or through structured expert elicitation (e.g., Analytic Hierarchy Process or Delphi method) where differential weighting is justified.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. Final Composite VWRI -->
+            <section class="content-section fade-in" style="margin-bottom: 3.5rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 1.25rem;">3. Final Composite VWRI</h2>
+                <div class="text-content">
+                    <div class="formula-card" style="border-left: 5px solid var(--primary-color);">
+                        <div class="formula-title">Composite Equation</div>
+                        <div class="formula-math" style="font-size: 1.25rem;">
+                            $$\text{VWRI} = 0.30 \times \text{Hydrological} + 0.20 \times \text{Infrastructure} + 0.15 \times \text{Water Quality} + 0.15 \times \text{Climate} + 0.20 \times \text{Socio-economic}$$
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Indicators, Variables and Measurement Formulae (Table 1) -->
+            <section class="content-section fade-in" style="margin-bottom: 4rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 0.75rem;">4. Indicators, Variables and Measurement Formulae</h2>
+                <p style="font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 1.5rem;">
+                    Table 1 sets out all 34 indicators, their suggested measurement formulae, and primary data sources, organised by Realm.
+                </p>
+
+                <!-- Table 1: Complete 34 Indicators -->
+                <div class="vwri-table-wrapper">
+                    <table class="vwri-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 24%;">Indicator</th>
+                                <th style="width: 46%;">Suggested Measurement Formula</th>
+                                <th style="width: 30%;">Primary Data Source</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Realm: Hydrological -->
+                            <tr class="realm-header-row">
+                                <td colspan="3"><i class="fas fa-water"></i> Realm: Hydrological Resilience (Weight 0.30)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Groundwater Depth (DTW)</strong></td>
+                                <td><strong>DTW</strong> = mean pre-monsoon depth to water table (m bgl), averaged across observation wells in village</td>
+                                <td>CGWB piezometric network / State GWD; India-WRIS</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Groundwater Level Trend (GTS)</strong></td>
+                                <td><strong>GTS</strong> = slope of linear regression of DTW (m) on time (years), over last 5–10 years</td>
+                                <td>CGWB long-term water-level series (India-WRIS); State GWD monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Recharge Potential (RP)</strong></td>
+                                <td>$\text{RP} = \left(\dfrac{\text{Annual GW Recharge (m}^3\text{/yr)}}{\text{Village Area (m}^2\text{)}}\right) \times 1000\text{ mm/yr}$</td>
+                                <td>CGWB / State GWD Dynamic GW Resource Assessment (GEC-2015)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water Source Density (WSD)</strong></td>
+                                <td>$\text{WSD} = \dfrac{\text{No. of functional drinking sources}}{\text{Village area (km}^2\text{)}}$</td>
+                                <td>Field inventory survey (GP asset register); village-boundary GIS</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Restoration of Water Bodies (AHI)</strong></td>
+                                <td>$\text{AHI} = \dfrac{\sum(W_i \times A_i)}{\sum(A_i)}$<br><small style="color: #64748b;">$A_i$ = waterbody area, $W_i$ = condition weight (0–1)</small></td>
+                                <td>Field survey / remote-sensing inventory; expert or VWSC weighting</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Source Reliability (SR)</strong></td>
+                                <td>$\text{SR} = \left(\dfrac{\text{Operational supply days in year}}{365}\right) \times 100$</td>
+                                <td>VWSC / GWSSB water-supply logbooks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water Availability per Capita (PCA)</strong></td>
+                                <td>$\text{PCA} = \dfrac{\text{Annual available water (m}^3\text{/yr)}}{\text{Village population}}\text{ (m}^3\text{/cap/yr)}$</td>
+                                <td>CGWB / State Water Resources Dept; Census / GP population</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Surface Water Availability (SWSI)</strong></td>
+                                <td>$\text{SWSI} = \left(\dfrac{\text{Storage at onset of dry season (m}^3\text{)}}{\text{Full designed capacity (m}^3\text{)}}\right) \times 100$</td>
+                                <td>State Water Resources / Irrigation Dept tank & pond records; satellite waterbody estimation</td>
+                            </tr>
+
+                            <!-- Realm: Infrastructure -->
+                            <tr class="realm-header-row">
+                                <td colspan="3"><i class="fas fa-faucet"></i> Realm: Infrastructure Resilience (Weight 0.20)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Household Supply Coverage (CR)</strong></td>
+                                <td>$\text{CR} = \left(\dfrac{\text{Households with functional tap}}{\text{Total households}}\right) \times 100$</td>
+                                <td>JJM IMIS dashboard; PHED tap-connection register</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Storage Capacity per Capita (SPC)</strong></td>
+                                <td>$\text{SPC} = \dfrac{\text{Total storage capacity (litres)}}{\text{Village population}}$</td>
+                                <td>GP infrastructure asset register</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Operational Reliability (OR)</strong></td>
+                                <td>$\text{OR} = \left(\dfrac{\text{Pump/source operational days in year}}{365}\right) \times 100$</td>
+                                <td>VWSC O&M logbooks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pipeline Network Density (PND)</strong></td>
+                                <td>$\text{PND} = \dfrac{\text{Total pipeline length (km)}}{\text{Village area (km}^2\text{)}}$</td>
+                                <td>GIS-based pipeline network asset mapping</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Breakdown Frequency (BF)</strong></td>
+                                <td>$\text{BF} = \dfrac{\text{Breakdowns recorded in year}}{\text{Installed water-supply units}}$</td>
+                                <td>Maintenance / complaint-register records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Backup Source Availability (BC)</strong></td>
+                                <td>$\text{BC} = \left(\dfrac{\text{Habitations with backup source}}{\text{Total habitations}}\right) \times 100$</td>
+                                <td>GP backup-source asset inventory</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Distribution Delivery Efficiency (DE)</strong></td>
+                                <td>$\text{DE} = \left(\dfrac{\text{Water delivered to consumers}}{\text{Water produced at source}}\right) \times 100$</td>
+                                <td>Bulk-supply & consumer meter records (water-audit data)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Disaster Resilience (DFR)</strong></td>
+                                <td>$\text{DFR} = \left(\dfrac{\text{Assets functional post-disaster}}{\text{Assets exposed to disaster}}\right) \times 100$</td>
+                                <td>DDMA post-disaster functionality survey; asset-damage records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pipe Material Quality (PMQI)</strong></td>
+                                <td>$\text{PMQI} = \left(\dfrac{\text{Length of corrosion-resistant pipe}}{\text{Total pipeline length}}\right) \times 100$</td>
+                                <td>GIS pipeline mapping; material-spec & as-built drawing register</td>
+                            </tr>
+
+                            <!-- Realm: Water Quality -->
+                            <tr class="realm-header-row">
+                                <td colspan="3"><i class="fas fa-flask"></i> Realm: Water Quality Resilience (Weight 0.15)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Composite Chemical Water Quality (CWQI)</strong></td>
+                                <td>$\text{CCWQI} = \dfrac{\sum(W_i \times Q_i)}{\sum(W_i)}$<br><small style="color: #64748b;">$Q_i$ = sub-index per BIS 10500</small></td>
+                                <td>Public Health Water Testing Laboratory multi-parameter analysis (BIS 10500:2012)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Safe Source Availability (SSR)</strong></td>
+                                <td>$\text{SSR} = \left(\dfrac{\text{Sources meeting quality standards}}{\text{Total sources}}\right) \times 100$</td>
+                                <td>Public Health Water Testing Laboratory records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Seasonal Quality Stability (SI)</strong></td>
+                                <td>$\text{SI} = 100 - \left(\dfrac{|\text{WQI}_{\text{pre}} - \text{WQI}_{\text{post}}|}{\text{WQI}_{\max}}\right) \times 100$</td>
+                                <td>State PHED pre- and post-monsoon sampling records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Composite Biological Water Quality (CBWQI)</strong></td>
+                                <td>$\text{CBWQI} = \left(\dfrac{\text{Samples negative for } E.\ coli\text{ / coliform}}{\text{Total samples tested}}\right) \times 100$</td>
+                                <td>Public Health lab microbiological (MPN / membrane-filtration) tests, BIS 10500:2012</td>
+                            </tr>
+
+                            <!-- Realm: Climate -->
+                            <tr class="realm-header-row">
+                                <td colspan="3"><i class="fas fa-cloud-sun-rain"></i> Realm: Climate Resilience (Weight 0.15)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rainfall Variability (CV)</strong></td>
+                                <td>$\text{CV} = \left(\dfrac{\sigma}{\mu}\right) \times 100$<br><small style="color: #64748b;">From $\ge 20$ years rainfall records</small></td>
+                                <td>IMD rain-gauge station records ($\ge 20$-yr series)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mean SPI of Drought Years (MSPI)</strong></td>
+                                <td>$\text{SPI} = \dfrac{X_i - \bar{X}}{\sigma}$<br><small style="color: #64748b;">Rainfall fitted to gamma distribution</small></td>
+                                <td>IMD gridded/station rainfall; SPI per WMO / McKee et al. (1993)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Consecutive Dry Years (CDY)</strong></td>
+                                <td>Count of consecutive years with annual rainfall &lt; 75% of long-term average</td>
+                                <td>IMD rainfall records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Drought Frequency (FR)</strong></td>
+                                <td>$\text{FR} = \left(\dfrac{\text{Drought years (SPI} \le -1.0\text{)}}{\text{Total years of record}}\right) \times 100$</td>
+                                <td>IMD rainfall records / SPI-derived drought classification</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature Trend (TTS)</strong></td>
+                                <td><strong>TTS</strong> = slope of linear regression of annual mean temperature (°C) on time (years)</td>
+                                <td>IMD temperature station records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Recharge Sensitivity to Rainfall (RS)</strong></td>
+                                <td>$\text{RS} = \dfrac{\Delta\% \text{ Groundwater recharge}}{\Delta\% \text{ Annual rainfall}}$</td>
+                                <td>CGWB recharge estimates cross-referenced with IMD rainfall</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GHG Emission Control Index (GECI)</strong></td>
+                                <td>$\text{GECI} = \left[\dfrac{E_{\text{baseline}} - E_{\text{actual}}}{E_{\text{baseline}}}\right] \times 100$</td>
+                                <td>Village/DISCOM energy records; CEA CO2 baseline / IPCC emission factors</td>
+                            </tr>
+
+                            <!-- Realm: Socio-economic -->
+                            <tr class="realm-header-row">
+                                <td colspan="3"><i class="fas fa-users"></i> Realm: Socio-economic Resilience (Weight 0.20)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Per Capita Income (IPC)</strong></td>
+                                <td>$\text{IPC} = \dfrac{\text{Annual household income (INR)}}{\text{Household size}}$</td>
+                                <td>Household socio-economic survey; Census / SECC</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Livestock Dependency (LR)</strong></td>
+                                <td>$\text{LR} = \dfrac{\text{Livestock population (SLU)}}{\text{Human population}}$</td>
+                                <td>Livestock Census (Dept of Animal Husbandry & Dairying); village survey</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water-scarcity Migration Rate (MR)</strong></td>
+                                <td>$\text{MR} = \left(\dfrac{\text{Households reporting water migration}}{\text{Total households}}\right) \times 100$</td>
+                                <td>Household survey; GP migration records</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Community Participation (CPR)</strong></td>
+                                <td>$\text{CPR} = \left(\dfrac{\text{Active VWSC/Pani Samiti participants}}{\text{Total eligible adult population}}\right) \times 100$</td>
+                                <td>VWSC / Pani Samiti attendance registers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water Governance Index (CGS)</strong></td>
+                                <td><strong>CGS</strong> = Mean of 3 binary indicators: (1) functional VWSC; (2) regular meetings &amp; O&amp;M records; (3) water contingency plan</td>
+                                <td>VWSC records; key-informant interview / questionnaire</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Conservation Participation (WCPR)</strong></td>
+                                <td>$\text{WCPR} = 0.5 \times \text{AR} + 0.5 \times \text{CFI}$<br><small style="color: #64748b;">(adoption rate + funding/contribution rate)</small></td>
+                                <td>Household survey; GP water-conservation asset records; VWSC O&M fund records</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 5. Raw-Value Rating Scale (Benchmark Reference) -->
+            <section class="content-section fade-in" style="margin-bottom: 3rem;">
+                <h2 style="color: var(--secondary-color); margin-bottom: 0.75rem;">5. Raw-Value Rating Scale (Benchmark Reference)</h2>
+                <div class="text-content">
+                    <p style="font-size: 1.05rem; line-height: 1.8; color: #334155; margin-bottom: 1.25rem;">
+                        Each indicator is also rated on a <strong>5-tier scale (Very Low → Very High)</strong> applied directly to its raw measured value, before normalization. Boundaries are anchored to recognised standards (CGWB, BIS 10500:2012, Jal Jeevan Mission, Falkenmark Index, IMD/WMO climate classifications, IPCC, NSSO/Census) where available, or to the empirical range typical of semi-arid Gujarat villages, divided into five approximately equal classes.
+                    </p>
+                    <p style="font-size: 0.95rem; color: #b45309; background: #fffbeb; padding: 0.75rem 1rem; border-left: 4px solid #f59e0b; border-radius: 4px; margin-bottom: 2rem;">
+                        <i class="fas fa-info-circle"></i> <strong>Note:</strong> For “Negative” indicators, the Very Low–Very High labels still denote resilience, so the numeric direction of the band is reversed relative to “Positive” indicators.
+                    </p>
+                </div>
+
+                <!-- 5.1 Hydrological Resilience Table -->
+                <div class="methodology-subsection">
+                    <h3><i class="fas fa-water" style="color: #0284c7;"></i> Hydrological Resilience</h3>
+                    <div class="vwri-table-wrapper">
+                        <table class="vwri-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicator (unit)</th>
+                                    <th>Very Low</th>
+                                    <th>Low</th>
+                                    <th>Moderate</th>
+                                    <th>High</th>
+                                    <th>Very High</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>DTW (m)</td><td>&gt; 40</td><td>20–40</td><td>10–20</td><td>5–10</td><td>&le; 5</td></tr>
+                                <tr><td>GTS (m/yr)</td><td>&gt; 0.20</td><td>0.05–0.20</td><td>−0.05 to 0.05</td><td>−0.20 to −0.05</td><td>&lt; −0.20</td></tr>
+                                <tr><td>RP (mm/yr)</td><td>&le; 50</td><td>50–100</td><td>100–200</td><td>200–350</td><td>&gt; 350</td></tr>
+                                <tr><td>WSD (src/km²)</td><td>&le; 0.5</td><td>0.5–1.5</td><td>1.5–3.0</td><td>3.0–5.0</td><td>&gt; 5.0</td></tr>
+                                <tr><td>AHI (0–1)</td><td>0–0.2</td><td>0.2–0.4</td><td>0.4–0.6</td><td>0.6–0.8</td><td>0.8–1.0</td></tr>
+                                <tr><td>SR (%)</td><td>&le; 40%</td><td>40–60%</td><td>60–75%</td><td>75–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>PCA (m³/cap/yr)</td><td>&le; 500</td><td>500–1,000</td><td>1,000–1,700</td><td>1,700–2,500</td><td>&gt; 2,500</td></tr>
+                                <tr><td>SWSI (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5.2 Infrastructure Resilience Table -->
+                <div class="methodology-subsection">
+                    <h3><i class="fas fa-faucet" style="color: #0d9488;"></i> Infrastructure Resilience</h3>
+                    <div class="vwri-table-wrapper">
+                        <table class="vwri-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicator (unit)</th>
+                                    <th>Very Low</th>
+                                    <th>Low</th>
+                                    <th>Moderate</th>
+                                    <th>High</th>
+                                    <th>Very High</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>CR (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–55%</td><td>55–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>SPC (L/cap)</td><td>&le; 25</td><td>25–50</td><td>50–70</td><td>70–100</td><td>&gt; 100</td></tr>
+                                <tr><td>OR (%)</td><td>&le; 40%</td><td>40–60%</td><td>60–75%</td><td>75–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>PND (km/km²)</td><td>&le; 0.5</td><td>0.5–1.5</td><td>1.5–3.0</td><td>3.0–5.0</td><td>&gt; 5.0</td></tr>
+                                <tr><td>BF (/unit/yr)</td><td>&gt; 4</td><td>2–4</td><td>1–2</td><td>0.5–1</td><td>&le; 0.5</td></tr>
+                                <tr><td>BC (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <tr><td>DE (%)</td><td>&le; 50%</td><td>50–65%</td><td>65–80%</td><td>80–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>DFR (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <tr><td>PMQI (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5.3 Water Quality Resilience Table -->
+                <div class="methodology-subsection">
+                    <h3><i class="fas fa-flask" style="color: #2563eb;"></i> Water Quality Resilience</h3>
+                    <div class="vwri-table-wrapper">
+                        <table class="vwri-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicator (unit)</th>
+                                    <th>Very Low</th>
+                                    <th>Low</th>
+                                    <th>Moderate</th>
+                                    <th>High</th>
+                                    <th>Very High</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>CWQI (0–100)</td><td>&le; 40</td><td>40–55</td><td>55–70</td><td>70–85</td><td>&gt; 85</td></tr>
+                                <tr><td>SSR (%)</td><td>&le; 40%</td><td>40–60%</td><td>60–75%</td><td>75–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>SI (0–100)</td><td>&le; 60</td><td>60–75</td><td>75–85</td><td>85–95</td><td>&gt; 95</td></tr>
+                                <tr><td>CBWQI (%)</td><td>&le; 50%</td><td>50–70%</td><td>70–85%</td><td>85–95%</td><td>&gt; 95%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5.4 Climate Resilience Table -->
+                <div class="methodology-subsection">
+                    <h3><i class="fas fa-cloud-sun-rain" style="color: #e11d48;"></i> Climate Resilience</h3>
+                    <div class="vwri-table-wrapper">
+                        <table class="vwri-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicator (unit)</th>
+                                    <th>Very Low</th>
+                                    <th>Low</th>
+                                    <th>Moderate</th>
+                                    <th>High</th>
+                                    <th>Very High</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>CV (%)</td><td>&gt; 45%</td><td>35–45%</td><td>25–35%</td><td>15–25%</td><td>&le; 15%</td></tr>
+                                <tr><td>MSPI</td><td>&le; −2.0</td><td>−2.0 to −1.5</td><td>−1.5 to −1.0</td><td>−1.0 to −0.5</td><td>&gt; −0.5</td></tr>
+                                <tr><td>CDY (yrs)</td><td>&gt; 4</td><td>3–4</td><td>2–3</td><td>1–2</td><td>&lt; 1</td></tr>
+                                <tr><td>FR (%)</td><td>&gt; 40%</td><td>30–40%</td><td>20–30%</td><td>10–20%</td><td>&le; 10%</td></tr>
+                                <tr><td>TTS (°C/yr)</td><td>&gt; 0.05</td><td>0.03–0.05</td><td>0.02–0.03</td><td>0.01–0.02</td><td>&le; 0.01</td></tr>
+                                <tr><td>RS (elasticity)</td><td>&gt; 2.0</td><td>1.5–2.0</td><td>1.0–1.5</td><td>0.5–1.0</td><td>&le; 0.5</td></tr>
+                                <tr><td>GECI (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5.5 Socio-economic Resilience Table -->
+                <div class="methodology-subsection">
+                    <h3><i class="fas fa-users" style="color: #7c3aed;"></i> Socio-economic Resilience</h3>
+                    <div class="vwri-table-wrapper">
+                        <table class="vwri-table">
+                            <thead>
+                                <tr>
+                                    <th>Indicator (unit)</th>
+                                    <th>Very Low</th>
+                                    <th>Low</th>
+                                    <th>Moderate</th>
+                                    <th>High</th>
+                                    <th>Very High</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>IPC (₹/yr)</td><td>&le; 40,000</td><td>40k–70k</td><td>70k–1,00k</td><td>1,00k–1,50k</td><td>&gt; 1,50,000</td></tr>
+                                <tr><td>LR (SLU/cap)</td><td>&gt; 1.5</td><td>1.0–1.5</td><td>0.6–1.0</td><td>0.3–0.6</td><td>&le; 0.3</td></tr>
+                                <tr><td>MR (%)</td><td>&gt; 20%</td><td>10–20%</td><td>5–10%</td><td>1–5%</td><td>&le; 1%</td></tr>
+                                <tr><td>CPR (%)</td><td>&le; 10%</td><td>10–25%</td><td>25–40%</td><td>40–60%</td><td>&gt; 60%</td></tr>
+                                <tr><td>CGS (0–1)</td><td>= 0</td><td>0–0.33</td><td>0.33–0.67</td><td>0.67–1 (partial)</td><td>= 1</td></tr>
+                                <tr><td>WCPR (%)</td><td>&le; 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <h3>Village Water Resilience</h3>
+                    <p class="footer-tagline">W4C — Water for Communities | A Composite Framework for Assessing Village-Level Water Resilience.</p>
+                    <p class="footer-affil"><i class="fas fa-university"></i> Department of Civil Engineering, IIT Gandhinagar</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Framework</h3>
+                    <ul class="footer-links">
+                        <li><a href="framework.html">Five Realms</a></li>
+                        <li><a href="methodology.html">34 Indicators</a></li>
+                        <li><a href="methodology.html#benchmarks">Benchmark Scales</a></li>
+                        <li><a href="calculator.html">VWRI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About VWRI</a></li>
+                        <li><a href="benefits.html">Key Benefits</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="team.html">Research Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-section">
+                    <h3>Connect With Us</h3>
+                    <p class="footer-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:pranabm@iitgn.ac.in">pranabm@iitgn.ac.in</a></p>
+                    <p class="footer-contact-item"><i class="fas fa-location-dot"></i> <span>Gandhinagar, Gujarat, India</span></p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/indra-mani-tripathi-08b96418b/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=vZAHrksAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://www.researchgate.net/profile/Indra-Tripathi" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Village Water Resilience Index (VWRI). Developed at IIT Gandhinagar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

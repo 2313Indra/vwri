@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Water Resilience Index (VWRI)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">VWRI Index</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="framework.html">Framework</a></li>
+                <li><a href="methodology.html">Methodology</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="calculator.html" class="calculator-btn active">Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>VILLAGE WATER RESILIENCE INDEX</h1>
+            <p class="subtitle">Calculate Hydrological, Infrastructure, Water Quality, Climate, and Socio-economic Realms</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <main>
+            <!-- Dashboard Summary Banner -->
+            <div class="city-condition">
+                <div class="dashboard-header">
+                    <h2>Village Water Resilience Assessment</h2>
+                    <p class="dashboard-tagline">Evaluate village-level water resilience across 5 pillars (34 indicators)</p>
+                </div>
+
+                <div class="dashboard-main-kpis">
+                    <div class="kpi-card composite-kpi">
+                        <span class="kpi-label">Composite VWRI Score</span>
+                        <span class="kpi-value" id="composite-vwri-score">-</span>
+                        <span class="kpi-norm"></span>
+                    </div>
+                    <div class="kpi-card resilience-kpi">
+                        <span class="kpi-label">Resilience Classification</span>
+                        <div class="resilience-badge-wrapper">
+                            <span id="water-sensitivity-level" class="status-badge">Please fill all indicators</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Realm Mini Pills -->
+                <div class="realm-mini-pills">
+                    <div class="mini-pill" data-realm-target="Hydrological-realm">
+                        <span class="pill-name">Hydrological</span>
+                        <span class="pill-score" id="mini-score-h" style="display: none;"></span>
+                    </div>
+                    <div class="mini-pill" data-realm-target="Infrastructure-realm">
+                        <span class="pill-name">Infrastructure</span>
+                        <span class="pill-score" id="mini-score-i" style="display: none;"></span>
+                    </div>
+                    <div class="mini-pill" data-realm-target="WaterQuality-realm">
+                        <span class="pill-name">Water Quality</span>
+                        <span class="pill-score" id="mini-score-wq" style="display: none;"></span>
+                    </div>
+                    <div class="mini-pill" data-realm-target="climate-realm">
+                        <span class="pill-name">Climate</span>
+                        <span class="pill-score" id="mini-score-c" style="display: none;"></span>
+                    </div>
+                    <div class="mini-pill" data-realm-target="socio-economic-realm">
+                        <span class="pill-name">Socio-economic</span>
+                        <span class="pill-score" id="mini-score-se" style="display: none;"></span>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="dashboard-actions">
+                    <button type="button" id="btn-load-sample" class="action-btn primary-action">
+                        <i class="fas fa-bolt"></i> Load Sample Village Data
+                    </button>
+                    <button type="button" id="btn-export-pdf" class="action-btn pdf-action" title="Export comprehensive assessment report as professional PDF">
+                        <i class="fas fa-file-pdf"></i> Export Official Report (PDF)
+                    </button>
+                    <button type="button" id="btn-reset-all" class="action-btn secondary-action">
+                        <i class="fas fa-undo"></i> Reset All
+                    </button>
+                    <button type="button" id="btn-toggle-rules" class="action-btn outline-action">
+                        <i class="fas fa-table"></i> <span id="rules-toggle-text">View Classification Rules</span> <i class="fas fa-chevron-down toggle-icon" id="rules-toggle-icon"></i>
+                    </button>
+                </div>
+
+                <!-- Collapsible Classification Rules Table -->
+                <div class="collapsible-rules" id="collapsible-rules">
+                    <h3>Water Resilience Classification Rules</h3>
+                    <table class="rules-table">
+                        <thead>
+                            <tr>
+                                <th>Realm Score Range (RS) / Composite VWRI</th>
+                                <th>Water Resilience Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RS ≤ 1.5</td>
+                                <td>Very Low resilience</td>
+                            </tr>
+                            <tr>
+                                <td>1.5 &lt; RS ≤ 2.5</td>
+                                <td>Low resilience</td>
+                            </tr>
+                            <tr>
+                                <td>2.5 &lt; RS ≤ 3.5</td>
+                                <td>Moderate resilience</td>
+                            </tr>
+                            <tr>
+                                <td>3.5 &lt; RS ≤ 4.5</td>
+                                <td>High resilience</td>
+                            </tr>
+                            <tr>
+                                <td>RS &gt; 4.5</td>
+                                <td>Very High resilience</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="rules-note">VWRI = 0.30 × Hydrological + 0.20 × Infrastructure + 0.15 × Water Quality + 0.15 × Climate + 0.20 × Socio-economic</p>
+                </div>
+            </div>
+
+            <!-- View Controls & Tabs Navigation -->
+            <div class="view-controls-container">
+                <div class="realm-tabs" role="tablist">
+                    <button type="button" class="realm-tab-btn active" data-realm-target="Hydrological-realm">
+                        <span class="tab-index">1</span>
+                        <span class="tab-title">Hydrological</span>
+                        <span class="tab-score-badge" id="tab-score-h" style="display: none;"></span>
+                    </button>
+                    <button type="button" class="realm-tab-btn" data-realm-target="Infrastructure-realm">
+                        <span class="tab-index">2</span>
+                        <span class="tab-title">Infrastructure</span>
+                        <span class="tab-score-badge" id="tab-score-i" style="display: none;"></span>
+                    </button>
+                    <button type="button" class="realm-tab-btn" data-realm-target="WaterQuality-realm">
+                        <span class="tab-index">3</span>
+                        <span class="tab-title">Water Quality</span>
+                        <span class="tab-score-badge" id="tab-score-wq" style="display: none;"></span>
+                    </button>
+                    <button type="button" class="realm-tab-btn" data-realm-target="climate-realm">
+                        <span class="tab-index">4</span>
+                        <span class="tab-title">Climate</span>
+                        <span class="tab-score-badge" id="tab-score-c" style="display: none;"></span>
+                    </button>
+                    <button type="button" class="realm-tab-btn" data-realm-target="socio-economic-realm">
+                        <span class="tab-index">5</span>
+                        <span class="tab-title">Socio-economic</span>
+                        <span class="tab-score-badge" id="tab-score-se" style="display: none;"></span>
+                    </button>
+                </div>
+
+                <div class="layout-toggle">
+                    <button type="button" id="btn-toggle-layout" class="layout-toggle-btn">
+                        <i class="fas fa-th" id="layout-toggle-icon"></i> <span id="layout-toggle-text">5-Column Grid View</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Realms Container (Default Tabbed View, Switchable to 5-Column Grid View) -->
+            <div class="realms-container" id="realms-container">
+
+                <!-- ==========================================
+                     Realm 1: Hydrological Resilience (Weight: 0.30)
+                     ========================================== -->
+                <section class="realm active" id="Hydrological-realm">
+                    <h2>Hydrological Realm</h2>
+                    <div class="indicators">
+                        <!-- 1.1 Groundwater Depth -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>1. Groundwater Depth</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 40 m</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20 &lt; DTW ≤ 40 m</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 10 &lt; DTW ≤ 20 m</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 5 &lt; DTW ≤ 10 m</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 5 m</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="groundWater-depth">Depth to water table (DTW, m)</label>
+                                <input type="number" id="groundWater-depth" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>DTW: <span id="groundWaterDepth-score">-</span> m</p>
+                                <p>Rating: <span id="groundWaterDepth-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.2 Groundwater Level Trend -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>2. Groundwater Level Trend</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 0.20 m/yr</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 0.05 &lt; GTS ≤ 0.20</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> −0.05 ≤ GTS ≤ 0.05</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> −0.20 ≤ GTS &lt; −0.05</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &lt; −0.20 m/yr</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="groundWater-Level">Groundwater Trend slope (GTS, m/yr)</label>
+                                <input type="number" id="groundWater-Level" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>GTS: <span id="groundWaterLevel-score">-</span> m/yr</p>
+                                <p>Rating: <span id="groundWaterLevel-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.3 Recharge Potential -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>3. Recharge Potential</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 50 mm/yr</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 50 &lt; RP ≤ 100</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 100 &lt; RP ≤ 200</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 200 &lt; RP ≤ 350</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 350 mm/yr</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="AGR">Annual Groundwater Recharge (m³/yr)</label>
+                                <input type="number" id="AGR" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="VGA">Village Geographical Area (m²)</label>
+                                <input type="number" id="VGA" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>RP: <span id="RechargePotential-score">-</span> mm/yr</p>
+                                <p>Rating: <span id="RechargePotential-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.4 Water Source Density -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>4. Water Source Density</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 0.5 sources/km²</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 0.5 &lt; WSD ≤ 1.5</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 1.5 &lt; WSD ≤ 3</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 3 &lt; WSD ≤ 5</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 5 sources/km²</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="drinkingwater-sources">Functional drinking-water sources</label>
+                                <input type="number" id="drinkingwater-sources" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="village-area">Village area (km²)</label>
+                                <input type="number" id="village-area" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>WSD: <span id="WaterSource-index">-</span> sources/km²</p>
+                                <p>Rating: <span id="WaterSource-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.5 Restoration of Water Bodies -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>5. Restoration of Water Bodies</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> 0 &lt; AHI ≤ 0.2</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 0.2 &lt; AHI ≤ 0.4</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 0.4 &lt; AHI ≤ 0.6</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 0.6 &lt; AHI ≤ 0.8</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> 0.8 &lt; AHI ≤ 1.0</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="water-body-weights">Weights (comma-separated, 0–1)</label>
+                                <input type="text" id="water-body-weights" placeholder="e.g. 0.8, 0.6, 0.9" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="water-body-areas">Areas (comma-separated, km²)</label>
+                                <input type="text" id="water-body-areas" placeholder="e.g. 1.2, 0.8, 1.5" required>
+                            </div>
+                            <div class="result">
+                                <p>AHI: <span id="aqua-health-index">-</span></p>
+                                <p>Rating: <span id="aqua-health-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.6 Source Reliability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>6. Source Reliability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 40% &lt; SR ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 60% &lt; SR ≤ 75%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 75% &lt; SR ≤ 90%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 90%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="source-supplied-water">Days source supplied water in year</label>
+                                <input type="number" id="source-supplied-water" step="1" min="0" max="365" required>
+                            </div>
+                            <div class="result">
+                                <p>SR: <span id="SourceReliability-index">-</span>%</p>
+                                <p>Rating: <span id="SourceReliability-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.7 Water Availability per Capita -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>7. Water Availability per Capita</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 500 m³/cap/yr</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 500 &lt; PCA ≤ 1,000</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 1,000 &lt; PCA ≤ 1,700</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 1,700 &lt; PCA ≤ 2,500</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 2,500 m³/cap/yr</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="Annual-available-water">Annual available water (m³/yr)</label>
+                                <input type="number" id="Annual-available-water" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="total-population">Village population</label>
+                                <input type="number" id="total-population" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>PCA: <span id="Water-Availability-index">-</span> m³/cap/yr</p>
+                                <p>Rating: <span id="Water-Availability-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 1.8 Surface Water Availability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>8. Surface Water Availability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; SWSI ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; SWSI ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 60% &lt; SWSI ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 80%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="surface-water-available">Dry-season retained storage (m³)</label>
+                                <input type="number" id="surface-water-available" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="storage-capacity">Designed/full storage capacity (m³)</label>
+                                <input type="number" id="storage-capacity" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>SWSI: <span id="SurfaceWater-Availability-index">-</span>%</p>
+                                <p>Rating: <span id="SurfaceWater-Availability-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="realm-footer">
+                        <div class="realm-score-display">
+                            <h3>Hydrological Realm Score: <span id="Hydrological-realm-score">-</span></h3>
+                        </div>
+                        <div class="tab-navigation-buttons">
+                            <button type="button" class="nav-step-btn next-tab-btn" data-next-target="Infrastructure-realm">
+                                Next: Infrastructure <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     Realm 2: Infrastructure Resilience (Weight: 0.20)
+                     ========================================== -->
+                <section class="realm" id="Infrastructure-realm">
+                    <h2>Infrastructure Realm </h2>
+                    <div class="indicators">
+                        <!-- 2.1 Household Water Supply Coverage -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>1. Household Supply Coverage</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; CR ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; CR ≤ 55%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 55% &lt; CR ≤ 90%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 90%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="households-tapconnection">Households with functional tap</label>
+                                <input type="number" id="households-tapconnection" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="households">Total households</label>
+                                <input type="number" id="households" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>CR: <span id="SupplyCoverage-index">-</span>%</p>
+                                <p>Rating: <span id="SupplyCoverage-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.2 Storage Capacity per Capita -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>2. Storage Capacity per Capita</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 25 L/cap</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 25 &lt; SPC ≤ 50</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 50 &lt; SPC ≤ 70</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 70 &lt; SPC ≤ 100</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 100 L/cap</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="storage-tank-capacity">Total storage capacity (litres)</label>
+                                <input type="number" id="storage-tank-capacity" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="villagepopulation">Village population</label>
+                                <input type="number" id="villagepopulation" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>SPC: <span id="StorageCapacity-index">-</span> L/cap</p>
+                                <p>Rating: <span id="StorageCapacity-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.3 Pump/Source Operational Reliability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>3. Operational Reliability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 40% &lt; OR ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 60% &lt; OR ≤ 75%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 75% &lt; OR ≤ 90%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 90%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="Source-Operational-reliability">Days pump/source operational in year</label>
+                                <input type="number" id="Source-Operational-reliability" step="1" min="0" max="365" required>
+                            </div>
+                            <div class="result">
+                                <p>OR: <span id="Operationalreliability-index">-</span>%</p>
+                                <p>Rating: <span id="Operationalreliability-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.4 Pipeline Network Density -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>4. Pipeline Network Density</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 0.5 km/km²</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 0.5 &lt; PND ≤ 1.5</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 1.5 &lt; PND ≤ 3</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 3 &lt; PND ≤ 5</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 5 km/km²</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="Pipeline-Network-density">Total pipeline length (km)</label>
+                                <input type="number" id="Pipeline-Network-density" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="Village-area">Village area (km²)</label>
+                                <input type="number" id="Village-area" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>PND: <span id="PipelineNetwork-index">-</span> km/km²</p>
+                                <p>Rating: <span id="PipelineNetwork-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.5 Infrastructure Breakdown Frequency -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>5. Breakdown Frequency</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 4 /unit/yr</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 2 &lt; BF ≤ 4</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 1 &lt; BF ≤ 2</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 0.5 &lt; BF ≤ 1</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 0.5 /unit/yr</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="breakdowns-recorded">Breakdowns recorded in year</label>
+                                <input type="number" id="breakdowns-recorded" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="water-supply-units">Installed water-supply units</label>
+                                <input type="number" id="water-supply-units" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>BF: <span id="BreakdownFrequency-index">-</span> /unit/yr</p>
+                                <p>Rating: <span id="BreakdownFrequency-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.6 Backup Source Availability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>6. Backup Source Availability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; BC ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; BC ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 60% &lt; BC ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 80%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="functioning-backup-source">Habitations with backup source</label>
+                                <input type="number" id="functioning-backup-source" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="Total-habitations">Total habitations</label>
+                                <input type="number" id="Total-habitations" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>BC: <span id="Backupcoverage-index">-</span>%</p>
+                                <p>Rating: <span id="Backupcoverage-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.7 Distribution Delivery Efficiency -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>7. Distribution Efficiency</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 50%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 50% &lt; DE ≤ 65%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 65% &lt; DE ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 80% &lt; DE ≤ 90%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 90%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="water-delivered-consumers">Water delivered to consumers (m³)</label>
+                                <input type="number" id="water-delivered-consumers" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="water-produced-source">Water produced at source (m³)</label>
+                                <input type="number" id="water-produced-source" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>DE: <span id="DistributionEfficiency-index">-</span>%</p>
+                                <p>Rating: <span id="DistributionEfficiency-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.8 Infrastructure Disaster Resilience -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>8. Disaster Resilience</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; DFR ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; DFR ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 60% &lt; DFR ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 80%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="functional-infrastructureunits-disaster">Assets functional post-disaster</label>
+                                <input type="number" id="functional-infrastructureunits-disaster" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="infrastructure-exposed-disaster">Total assets exposed to disaster</label>
+                                <input type="number" id="infrastructure-exposed-disaster" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>DFR: <span id="DisasterResilience-index">-</span>%</p>
+                                <p>Rating: <span id="DisasterResilience-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 2.9 Pipe Material Quality -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>9. Pipe Material Quality</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; PMQI ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; PMQI ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 60% &lt; PMQI ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 80%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="pipeline-networ-resistantmaterial">Corrosion-resistant pipeline length (km)</label>
+                                <input type="number" id="pipeline-networ-resistantmaterial" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="pipeline-network-length">Total pipeline length (km)</label>
+                                <input type="number" id="pipeline-network-length" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>PMQI: <span id="PipeMaterialQuality-index">-</span>%</p>
+                                <p>Rating: <span id="PipeMaterialQuality-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="realm-footer">
+                        <div class="realm-score-display">
+                            <h3>Infrastructure Realm Score: <span id="Infrastructure-realm-score">-</span></h3>
+                        </div>
+                        <div class="tab-navigation-buttons">
+                            <button type="button" class="nav-step-btn prev-tab-btn" data-prev-target="Hydrological-realm">
+                                <i class="fas fa-arrow-left"></i> Previous: Hydrological
+                            </button>
+                            <button type="button" class="nav-step-btn next-tab-btn" data-next-target="WaterQuality-realm">
+                                Next: Water Quality <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     Realm 3: Water Quality Resilience (Weight: 0.15)
+                     ========================================== -->
+                <section class="realm" id="WaterQuality-realm">
+                    <h2>Water Quality Realm </h2>
+                    <div class="indicators">
+                        <!-- 3.1 Composite Chemical Water Quality Index -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>1. Composite Chemical Water Quality</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 40</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 40 &lt; CWQI ≤ 55</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 55 &lt; CWQI ≤ 70</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 70 &lt; CWQI ≤ 85</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 85</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="CWQI-input">Composite Water Quality Index (0–100)</label>
+                                <input type="number" id="CWQI-input" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="result">
+                                <p>CWQI: <span id="CWQI-score">-</span></p>
+                                <p>Rating: <span id="CWQI-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 3.2 Safe Source Availability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>2. Safe Source Availability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 40% &lt; SSR ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 60% &lt; SSR ≤ 75%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 75% &lt; SSR ≤ 90%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 90%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="source-stested-quality-parameters">Sources meeting quality parameters</label>
+                                <input type="number" id="source-stested-quality-parameters" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="Total-sources">Total sources</label>
+                                <input type="number" id="Total-sources" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>SSR: <span id="Safesourceratio-index">-</span>%</p>
+                                <p>Rating: <span id="Safesourceratio-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 3.3 Seasonal Quality Stability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>3. Seasonal Quality Stability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 60</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 60 &lt; SI ≤ 75</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 75 &lt; SI ≤ 85</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 85 &lt; SI ≤ 95</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 95</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="WQI-pre-monsoon">WQI pre-monsoon (0–100)</label>
+                                <input type="number" id="WQI-pre-monsoon" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="WQI-post-monsoon">WQI post-monsoon (0–100)</label>
+                                <input type="number" id="WQI-post-monsoon" step="0.01" min="0" max="100" required>
+                            </div>
+                            <div class="result">
+                                <p>SI: <span id="Stability-index">-</span></p>
+                                <p>Rating: <span id="Stability-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 3.4 Composite Biological Water Quality -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>4. Composite Biological Water Quality</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 50%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 50% &lt; CBWQI ≤ 70%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 70% &lt; CBWQI ≤ 85%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 85% &lt; CBWQI ≤ 95%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 95%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="Ecoli-and-total-coliform">Samples negative for E. coli/coliform</label>
+                                <input type="number" id="Ecoli-and-total-coliform" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="Total-samples-tested">Total samples tested</label>
+                                <input type="number" id="Total-samples-tested" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>CBWQI: <span id="CompositeBiologicalWaterQuality-Index">-</span>%</p>
+                                <p>Rating: <span id="CompositeBiologicalWaterQuality-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="realm-footer">
+                        <div class="realm-score-display">
+                            <h3>Water Quality Realm Score: <span id="WaterQuality-realm-score">-</span></h3>
+                        </div>
+                        <div class="tab-navigation-buttons">
+                            <button type="button" class="nav-step-btn prev-tab-btn" data-prev-target="Infrastructure-realm">
+                                <i class="fas fa-arrow-left"></i> Previous: Infrastructure
+                            </button>
+                            <button type="button" class="nav-step-btn next-tab-btn" data-next-target="climate-realm">
+                                Next: Climate <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     Realm 4: Climate Resilience (Weight: 0.15)
+                     ========================================== -->
+                <section class="realm" id="climate-realm">
+                    <h2>Climate Realm</h2>
+                    <div class="indicators">
+                        <!-- 4.1 Rainfall Variability -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>1. Rainfall Variability</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 45%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 35% &lt; CV ≤ 45%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 25% &lt; CV ≤ 35%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 15% &lt; CV ≤ 25%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 15%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="Rainfall-SD">Rainfall Standard Deviation (σ, mm)</label>
+                                <input type="number" id="Rainfall-SD" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="Rainfall-Mean">Rainfall Mean (μ, mm)</label>
+                                <input type="number" id="Rainfall-Mean" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>CV: <span id="Rainfall-Variability-index">-</span>%</p>
+                                <p>Rating: <span id="Rainfall-Variability-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 4.2 Mean SPI of Drought Years -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>2. Mean SPI of Drought Years</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ −2.0</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> −2.0 &lt; MSPI ≤ −1.5</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> −1.5 &lt; MSPI ≤ −1.0</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> −1.0 &lt; MSPI ≤ −0.5</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; −0.5</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="MSPI-input">Mean SPI of drought years (SPI ≤ −1.0)</label>
+                                <input type="number" id="MSPI-input" step="0.01" placeholder="e.g. -1.25" required>
+                            </div>
+                            <div class="result">
+                                <p>MSPI: <span id="MSPI-score">-</span></p>
+                                <p>Rating: <span id="MSPI-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 4.3 Consecutive Dry Years -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>3. Consecutive Dry Years</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 4 years</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 3 ≤ CDY ≤ 4</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 2 ≤ CDY ≤ 3</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 1 ≤ CDY &lt; 2</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &lt; 1 year</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="CDY-input">Consecutive dry years count (&lt;75% avg)</label>
+                                <input type="number" id="CDY-input" step="1" min="0" required>
+                            </div>
+                            <div class="result">
+                                <p>CDY: <span id="CDY-score">-</span> years</p>
+                                <p>Rating: <span id="CDY-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 4.4 Drought Frequency -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>4. Drought Frequency</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 30% &lt; FR ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 20% &lt; FR ≤ 30%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 10% &lt; FR ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 10%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="drought-years-count">Drought years (SPI ≤ −1.0)</label>
+                                <input type="number" id="drought-years-count" step="1" min="0" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="total-years-record">Total years of record</label>
+                                <input type="number" id="total-years-record" step="1" min="1" required>
+                            </div>
+                            <div class="result">
+                                <p>FR: <span id="FR-score">-</span>%</p>
+                                <p>Rating: <span id="FR-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 4.5 Temperature Trend -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>5. Temperature Trend</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 0.05 °C/yr</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 0.03 &lt; TTS ≤ 0.05</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 0.02 &lt; TTS ≤ 0.03</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 0.01 &lt; TTS ≤ 0.02</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 0.01 °C/yr</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="TTS-input">Temperature trend slope (TTS, °C/yr)</label>
+                                <input type="number" id="TTS-input" step="0.001" placeholder="e.g. 0.025" required>
+                            </div>
+                            <div class="result">
+                                <p>TTS: <span id="TTS-score">-</span> °C/yr</p>
+                                <p>Rating: <span id="TTS-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 4.6 Groundwater Recharge Sensitivity to Rainfall -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>6. Recharge Sensitivity to Rainfall</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 2.0</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 1.5 &lt; RS ≤ 2.0</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 1.0 &lt; RS ≤ 1.5</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 0.5 &lt; RS ≤ 1.0</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 0.5</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="recharge-pct-change">% change in groundwater recharge</label>
+                                <input type="number" id="recharge-pct-change" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="rainfall-pct-change">% change in annual rainfall</label>
+                                <input type="number" id="rainfall-pct-change" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>RS: <span id="RS-score">-</span></p>
+                                <p>Rating: <span id="RS-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 4.7 GHG Emission Control Index -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>7. GHG Emission Control Index</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; GECI ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; GECI ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 60% &lt; GECI ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 80%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="baseline-ghg">Baseline GHG emissions (Ebaseline, tCO2e)</label>
+                                <input type="number" id="baseline-ghg" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="actual-ghg">Actual GHG emissions (Eactual, tCO2e)</label>
+                                <input type="number" id="actual-ghg" step="0.01" required>
+                            </div>
+                            <div class="result">
+                                <p>GECI: <span id="GECI-score">-</span>%</p>
+                                <p>Rating: <span id="GECI-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="realm-footer">
+                        <div class="realm-score-display">
+                            <h3>Climate Realm Score: <span id="climate-realm-score">-</span></h3>
+                        </div>
+                        <div class="tab-navigation-buttons">
+                            <button type="button" class="nav-step-btn prev-tab-btn" data-prev-target="WaterQuality-realm">
+                                <i class="fas fa-arrow-left"></i> Previous: Water Quality
+                            </button>
+                            <button type="button" class="nav-step-btn next-tab-btn" data-next-target="socio-economic-realm">
+                                Next: Socio-economic <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     Realm 5: Socio-economic Resilience (Weight: 0.20)
+                     ========================================== -->
+                <section class="realm" id="socio-economic-realm">
+                    <h2>Socio-economic Realm</h2>
+                    <div class="indicators">
+                        <!-- 5.1 Per Capita Income -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>1. Per Capita Income</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ ₹40,000</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> ₹40,000 &lt; IPC ≤ ₹70,000</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> ₹70,000 &lt; IPC ≤ ₹1,00,000</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> ₹1,00,000 &lt; IPC ≤ ₹1,50,000</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; ₹1,50,000</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="annual-household-income">Average annual household income (INR)</label>
+                                <input type="number" id="annual-household-income" step="100" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="household-size">Average household size</label>
+                                <input type="number" id="household-size" step="0.1" required>
+                            </div>
+                            <div class="result">
+                                <p>IPC: ₹<span id="IPC-index">-</span>/yr</p>
+                                <p>Rating: <span id="IPC-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 5.2 Livestock Dependency -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>2. Livestock Dependency</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 1.5 SLU/cap</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 1.0 &lt; LR ≤ 1.5</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 0.6 &lt; LR ≤ 1.0</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 0.3 &lt; LR ≤ 0.6</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 0.3 SLU/cap</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="livestock-slu">Livestock population (Standard Units, SLU)</label>
+                                <input type="number" id="livestock-slu" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="human-population-lr">Human population</label>
+                                <input type="number" id="human-population-lr" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>LR: <span id="LR-index">-</span> SLU/cap</p>
+                                <p>Rating: <span id="LR-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 5.3 Water-scarcity Migration Rate -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>3. Migration Rate (Water Scarcity)</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> &gt; 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 10% &lt; MR ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 5% &lt; MR ≤ 10%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 1% &lt; MR ≤ 5%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> ≤ 1%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="migrating-households">Households reporting seasonal migration</label>
+                                <input type="number" id="migrating-households" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="total-households-mr">Total households</label>
+                                <input type="number" id="total-households-mr" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>MR: <span id="MR-index">-</span>%</p>
+                                <p>Rating: <span id="MR-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 5.4 Community Participation in Water Management -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>4. Community Participation</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 10%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 10% &lt; CPR ≤ 25%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 25% &lt; CPR ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 40% &lt; CPR ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 60%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="active-vwsc-participants">Active participants in VWSC/Pani Samiti</label>
+                                <input type="number" id="active-vwsc-participants" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="eligible-adult-population">Total eligible adult population</label>
+                                <input type="number" id="eligible-adult-population" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>CPR: <span id="CPR-index">-</span>%</p>
+                                <p>Rating: <span id="CPR-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 5.5 Water Governance Index -->
+                        <div class="indicator governance-indicator">
+                            <div class="indicator-header">
+                                <h3>5. Water Governance Index</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> CGS = 0 (0 of 3 met)</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 0 &lt; CGS ≤ 0.33 (1 of 3 met)</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 0.33 &lt; CGS ≤ 0.67 (2 of 3 met)</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 0.67 &lt; CGS &lt; 1 (partially inst.)</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> CGS = 1 (all 3 criteria met)</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="cgs-q1">1. Is VWSC/Pani Samiti functional?</label>
+                                <select id="cgs-q1">
+                                    <option value="">Select option</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="cgs-q2">2. Regular meetings & O&M records?</label>
+                                <select id="cgs-q2">
+                                    <option value="">Select option</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="cgs-q3">3. Contingency/water-security plan?</label>
+                                <select id="cgs-q3">
+                                    <option value="">Select option</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="result">
+                                <p>CGS: <span id="CGS-index">-</span></p>
+                                <p>Rating: <span id="CGS-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+
+                        <!-- 5.6 Water Conservation Participation -->
+                        <div class="indicator">
+                            <div class="indicator-header">
+                                <h3>6. Conservation Participation</h3>
+                                <button type="button" class="benchmark-info-btn" title="View Cutoffs" aria-label="View Cutoffs">
+                                    <i class="fas fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="benchmark-popover">
+                                <div class="benchmark-tier"><span class="tier-badge very-low">VL</span> ≤ 20%</div>
+                                <div class="benchmark-tier"><span class="tier-badge low">L</span> 20% &lt; WCPR ≤ 40%</div>
+                                <div class="benchmark-tier"><span class="tier-badge moderate">M</span> 40% &lt; WCPR ≤ 60%</div>
+                                <div class="benchmark-tier"><span class="tier-badge high">H</span> 60% &lt; WCPR ≤ 80%</div>
+                                <div class="benchmark-tier"><span class="tier-badge very-high">VH</span> &gt; 80%</div>
+                            </div>
+                            <div class="input-group">
+                                <label for="wcpr-ar-households">Households adopting conservation (AR)</label>
+                                <input type="number" id="wcpr-ar-households" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="wcpr-cfi-households">Households contributing funding/in-kind (CFI)</label>
+                                <input type="number" id="wcpr-cfi-households" step="1" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="wcpr-total-households">Total households</label>
+                                <input type="number" id="wcpr-total-households" step="1" required>
+                            </div>
+                            <div class="result">
+                                <p>WCPR: <span id="WCPR-index">-</span>%</p>
+                                <p>Rating: <span id="WCPR-rating" class="rating">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="realm-footer">
+                        <div class="realm-score-display">
+                            <h3>Socio-economic Realm Score: <span id="socio-economic-realm-score">-</span></h3>
+                        </div>
+                        <div class="tab-navigation-buttons">
+                            <button type="button" class="nav-step-btn prev-tab-btn" data-prev-target="climate-realm">
+                                <i class="fas fa-arrow-left"></i> Previous: Climate
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Collapsible Full Indicator Reference Drawer (Table 2) -->
+            <div class="reference-drawer-container">
+                <button type="button" id="btn-toggle-all-benchmarks" class="drawer-toggle-btn">
+                    <span><i class="fas fa-book-open"></i> Full VWRI Indicator Benchmark Reference Table (Table 2)</span>
+                    <i class="fas fa-chevron-down drawer-icon" id="drawer-chevron"></i>
+                </button>
+                <div class="drawer-content" id="all-benchmarks-drawer">
+                    <div class="reference-table-wrapper">
+                        <table class="reference-benchmarks-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Indicator</th>
+                                    <th>Code</th>
+                                    <th>Unit / Direction</th>
+                                    <th>Very Low (1)</th>
+                                    <th>Low (2)</th>
+                                    <th>Moderate (3)</th>
+                                    <th>High (4)</th>
+                                    <th>Very High (5)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Realm 1 -->
+                                <tr><td>1.1</td><td>Groundwater Depth</td><td>DTW</td><td>m (Negative)</td><td>&gt; 40 m</td><td>20–40 m</td><td>10–20 m</td><td>5–10 m</td><td>≤ 5 m</td></tr>
+                                <tr><td>1.2</td><td>Groundwater Level Trend</td><td>GTS</td><td>m/yr (Negative)</td><td>&gt; 0.20</td><td>0.05–0.20</td><td>−0.05 to 0.05</td><td>−0.20 to −0.05</td><td>&lt; −0.20</td></tr>
+                                <tr><td>1.3</td><td>Recharge Potential</td><td>RP</td><td>mm/yr (Positive)</td><td>≤ 50</td><td>50–100</td><td>100–200</td><td>200–350</td><td>&gt; 350</td></tr>
+                                <tr><td>1.4</td><td>Water Source Density</td><td>WSD</td><td>sources/km² (Positive)</td><td>≤ 0.5</td><td>0.5–1.5</td><td>1.5–3.0</td><td>3.0–5.0</td><td>&gt; 5.0</td></tr>
+                                <tr><td>1.5</td><td>Restoration of Water Bodies</td><td>AHI</td><td>0–1 (Positive)</td><td>0–0.2</td><td>0.2–0.4</td><td>0.4–0.6</td><td>0.6–0.8</td><td>0.8–1.0</td></tr>
+                                <tr><td>1.6</td><td>Source Reliability</td><td>SR</td><td>% (Positive)</td><td>≤ 40%</td><td>40–60%</td><td>60–75%</td><td>75–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>1.7</td><td>Water Availability per Capita</td><td>PCA</td><td>m³/cap/yr (Positive)</td><td>≤ 500</td><td>500–1,000</td><td>1,000–1,700</td><td>1,700–2,500</td><td>&gt; 2,500</td></tr>
+                                <tr><td>1.8</td><td>Surface Water Availability</td><td>SWSI</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <!-- Realm 2 -->
+                                <tr><td>2.1</td><td>Supply Coverage</td><td>CR</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–55%</td><td>55–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>2.2</td><td>Storage Capacity per Capita</td><td>SPC</td><td>L/cap (Positive)</td><td>≤ 25</td><td>25–50</td><td>50–70</td><td>70–100</td><td>&gt; 100</td></tr>
+                                <tr><td>2.3</td><td>Operational Reliability</td><td>OR</td><td>% (Positive)</td><td>≤ 40%</td><td>40–60%</td><td>60–75%</td><td>75–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>2.4</td><td>Pipeline Network Density</td><td>PND</td><td>km/km² (Positive)</td><td>≤ 0.5</td><td>0.5–1.5</td><td>1.5–3.0</td><td>3.0–5.0</td><td>&gt; 5.0</td></tr>
+                                <tr><td>2.5</td><td>Breakdown Frequency</td><td>BF</td><td>/unit/yr (Negative)</td><td>&gt; 4</td><td>2–4</td><td>1–2</td><td>0.5–1</td><td>≤ 0.5</td></tr>
+                                <tr><td>2.6</td><td>Backup Source Availability</td><td>BC</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <tr><td>2.7</td><td>Distribution Delivery Efficiency</td><td>DE</td><td>% (Positive)</td><td>≤ 50%</td><td>50–65%</td><td>65–80%</td><td>80–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>2.8</td><td>Disaster Resilience</td><td>DFR</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <tr><td>2.9</td><td>Pipe Material Quality</td><td>PMQI</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <!-- Realm 3 -->
+                                <tr><td>3.1</td><td>Composite Chemical Water Quality</td><td>CWQI</td><td>0–100 (Positive)</td><td>≤ 40</td><td>40–55</td><td>55–70</td><td>70–85</td><td>&gt; 85</td></tr>
+                                <tr><td>3.2</td><td>Safe Source Availability</td><td>SSR</td><td>% (Positive)</td><td>≤ 40%</td><td>40–60%</td><td>60–75%</td><td>75–90%</td><td>&gt; 90%</td></tr>
+                                <tr><td>3.3</td><td>Seasonal Quality Stability</td><td>SI</td><td>0–100 (Positive)</td><td>≤ 60</td><td>60–75</td><td>75–85</td><td>85–95</td><td>&gt; 95</td></tr>
+                                <tr><td>3.4</td><td>Composite Biological Water Quality</td><td>CBWQI</td><td>% (Positive)</td><td>≤ 50%</td><td>50–70%</td><td>70–85%</td><td>85–95%</td><td>&gt; 95%</td></tr>
+                                <!-- Realm 4 -->
+                                <tr><td>4.1</td><td>Rainfall Variability</td><td>CV</td><td>% (Negative)</td><td>&gt; 45%</td><td>35–45%</td><td>25–35%</td><td>15–25%</td><td>≤ 15%</td></tr>
+                                <tr><td>4.2</td><td>Mean SPI of Drought Years</td><td>MSPI</td><td>SPI units (Positive)</td><td>≤ −2.0</td><td>−2.0 to −1.5</td><td>−1.5 to −1.0</td><td>−1.0 to −0.5</td><td>&gt; −0.5</td></tr>
+                                <tr><td>4.3</td><td>Consecutive Dry Years</td><td>CDY</td><td>years (Negative)</td><td>&gt; 4</td><td>3–4</td><td>2–3</td><td>1–2</td><td>&lt; 1</td></tr>
+                                <tr><td>4.4</td><td>Drought Frequency</td><td>FR</td><td>% (Negative)</td><td>&gt; 40%</td><td>30–40%</td><td>20–30%</td><td>10–20%</td><td>≤ 10%</td></tr>
+                                <tr><td>4.5</td><td>Temperature Trend</td><td>TTS</td><td>°C/yr (Negative)</td><td>&gt; 0.05</td><td>0.03–0.05</td><td>0.02–0.03</td><td>0.01–0.02</td><td>≤ 0.01</td></tr>
+                                <tr><td>4.6</td><td>Recharge Sensitivity to Rainfall</td><td>RS</td><td>elasticity (Negative)</td><td>&gt; 2.0</td><td>1.5–2.0</td><td>1.0–1.5</td><td>0.5–1.0</td><td>≤ 0.5</td></tr>
+                                <tr><td>4.7</td><td>GHG Emission Control Index</td><td>GECI</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                                <!-- Realm 5 -->
+                                <tr><td>5.1</td><td>Per Capita Income</td><td>IPC</td><td>INR/yr (Positive)</td><td>≤ ₹40,000</td><td>₹40k–₹70k</td><td>₹70k–₹100k</td><td>₹100k–₹150k</td><td>&gt; ₹150k</td></tr>
+                                <tr><td>5.2</td><td>Livestock Dependency</td><td>LR</td><td>SLU/cap (Negative)</td><td>&gt; 1.5</td><td>1.0–1.5</td><td>0.6–1.0</td><td>0.3–0.6</td><td>≤ 0.3</td></tr>
+                                <tr><td>5.3</td><td>Water-scarcity Migration Rate</td><td>MR</td><td>% (Negative)</td><td>&gt; 20%</td><td>10–20%</td><td>5–10%</td><td>1–5%</td><td>≤ 1%</td></tr>
+                                <tr><td>5.4</td><td>Community Participation</td><td>CPR</td><td>% (Positive)</td><td>≤ 10%</td><td>10–25%</td><td>25–40%</td><td>40–60%</td><td>&gt; 60%</td></tr>
+                                <tr><td>5.5</td><td>Water Governance Index</td><td>CGS</td><td>0–1 (Positive)</td><td>= 0</td><td>0–0.33</td><td>0.33–0.67</td><td>0.67–1.0</td><td>= 1.0</td></tr>
+                                <tr><td>5.6</td><td>Conservation Participation</td><td>WCPR</td><td>% (Positive)</td><td>≤ 20%</td><td>20–40%</td><td>40–60%</td><td>60–80%</td><td>&gt; 80%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Sticky KPI Bar -->
+    <div class="sticky-kpi-bar" id="sticky-kpi-bar" style="display: none;">
+        <div class="sticky-kpi-content">
+            <div class="sticky-score">
+                <span class="sticky-label">VWRI:</span>
+                <strong id="sticky-vwri-val">-</strong>
+            </div>
+            <div class="sticky-status">
+                <span id="sticky-resilience-badge" class="rating">-</span>
+            </div>
+            <div class="sticky-pills">
+                <span>H: <b id="sticky-h">-</b></span>
+                <span>I: <b id="sticky-i">-</b></span>
+                <span>WQ: <b id="sticky-wq">-</b></span>
+                <span>C: <b id="sticky-c">-</b></span>
+                <span>SE: <b id="sticky-se">-</b></span>
+            </div>
+            <button type="button" class="sticky-pdf-btn" id="btn-sticky-pdf" title="Export Official PDF Report">
+                <i class="fas fa-file-pdf"></i> PDF
+            </button>
+            <button type="button" class="sticky-top-btn" id="btn-sticky-top" title="Back to top">
+                <i class="fas fa-chevron-up"></i> Top
+            </button>
+        </div>
+    </div>
+
+    <!-- Village Metadata & PDF Export Modal -->
+    <div class="pdf-modal-overlay" id="pdf-modal-overlay" style="display: none;">
+        <div class="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title-wrap">
+                    <div class="pdf-icon-badge">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div>
+                        <h3 id="pdf-modal-title">Export Official Assessment Report (PDF)</h3>
+                        <p class="pdf-modal-subtitle">Village Water Resilience Index (VWRI) • W4C Initiative, IIT Gandhinagar</p>
+                    </div>
+                </div>
+                <button type="button" class="pdf-modal-close" id="btn-close-pdf-modal" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="pdf-metadata-form" class="pdf-modal-body">
+                <div class="pdf-form-grid">
+                    <div class="pdf-input-group">
+                        <label for="pdf-village-name"><i class="fas fa-map-marker-alt"></i> Village Name <span class="required">*</span></label>
+                        <input type="text" id="pdf-village-name" placeholder="e.g. Rampur" required>
+                    </div>
+                    <div class="pdf-input-group">
+                        <label for="pdf-taluka"><i class="fas fa-landmark"></i> Block / Taluka</label>
+                        <input type="text" id="pdf-taluka" placeholder="e.g. Mansa Taluka">
+                    </div>
+                    <div class="pdf-input-group">
+                        <label for="pdf-district"><i class="fas fa-city"></i> District <span class="required">*</span></label>
+                        <input type="text" id="pdf-district" placeholder="e.g. Gandhinagar" value="Gandhinagar" required>
+                    </div>
+                    <div class="pdf-input-group">
+                        <label for="pdf-state"><i class="fas fa-map"></i> State</label>
+                        <input type="text" id="pdf-state" placeholder="e.g. Gujarat" value="Gujarat">
+                    </div>
+                    <div class="pdf-input-group">
+                        <label for="pdf-assessor"><i class="fas fa-user-check"></i> Field Assessor / Agency</label>
+                        <input type="text" id="pdf-assessor" placeholder="e.g. Water Sanitation Committee / DWSM">
+                    </div>
+                    <div class="pdf-input-group">
+                        <label for="pdf-date"><i class="fas fa-calendar-alt"></i> Assessment Date</label>
+                        <input type="date" id="pdf-date">
+                    </div>
+                </div>
+
+                <div class="pdf-preview-notice">
+                    <i class="fas fa-shield-alt notice-icon"></i>
+                    <div>
+                        <strong>Template-Based Publication Quality:</strong>
+                        <span>Generates an executive-grade 4-page vector PDF containing official IIT Gandhinagar branding, scorecard, 34-indicator audit matrix, automated priority field interventions, and tripartite signature blocks.</span>
+                    </div>
+                </div>
+
+                <div class="pdf-modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="btn-cancel-pdf">Cancel</button>
+                    <button type="submit" class="btn-modal-generate" id="btn-confirm-pdf">
+                        <i class="fas fa-download"></i> Generate & Download PDF
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PDF Generation Libraries -->
+    <script src="js/jspdf.umd.min.js"></script>
+    <script src="js/jspdf.plugin.autotable.min.js"></script>
+    <script src="js/pdfReportGenerator.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

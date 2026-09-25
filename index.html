@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Water Resilience Index (VWRI) - W4C</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- MathJax for rendering mathematical equations -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">VWRI Index</a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="framework.html">Framework</a></li>
+                <li><a href="methodology.html">Methodology</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="calculator.html" class="calculator-btn">Calculator</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>VILLAGE WATER RESILIENCE INDEX</h1>
+            <p class="subtitle" style="font-size: 1.3rem; font-weight: 500; margin-bottom: 2rem;">VWRI: A Composite Framework for Assessing Village-Level Water Resilience</p>
+            <div class="hero-buttons">
+                <a href="calculator.html" class="cta-button primary">Try Calculator</a>
+                <a href="about.html" class="cta-button secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro" style="padding: 4.5rem 0 3rem; background-color: #ffffff;">
+        <div class="container">
+            <div class="intro-content" style="max-width: 900px; margin: 0 auto; text-align: left;">
+                <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--secondary-color); font-size: 2rem;">Introduction to VWRI</h2>
+                <p class="lead-text" style="font-size: 1.12rem; line-height: 1.85; margin-bottom: 1.25rem; color: #334155;">
+                    The <strong style="color: #0f172a;">Village Water Resilience Index (VWRI)</strong> is a composite, indicator-based framework for assessing how resilient a village's water system is — covering groundwater and surface-water conditions, supply infrastructure, drinking-water quality, exposure to climate variability, and the socio-economic capacity of the community to cope with water stress.
+                </p>
+                <p style="font-size: 1.05rem; line-height: 1.8; color: #475569; margin-bottom: 1rem;">
+                    The framework evaluates village-level water resilience across five pillars (<strong style="color: #0f172a;">“Realms”</strong>) built from <strong style="color: #0f172a;">34 field-measurable indicators</strong>: Hydrological, Infrastructure, Water Quality, Climate, and Socio-economic. Each indicator is scored on a 5-tier scale (Very Low to Very High), aggregated into a Realm Score, and combined into a single Composite VWRI using fixed Realm weights.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Pillars Section -->
+    <section class="pillars" style="background-color: var(--light-background); padding: 4rem 0;">
+        <div class="container">
+            <h2 style="color: var(--secondary-color);">The Five Realms of Resilience</h2>
+            <p style="text-align: center; max-width: 750px; margin: -1.5rem auto 3rem; color: var(--light-text);">
+                A balanced multi-dimensional assessment drawing on 34 indicators with fixed realm weights summing to 1.00.
+            </p>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Hydrological</h3>
+                    <span class="pillar-meta">Weight: 0.30 (8 indicators)</span>
+                    <p class="pillar-desc">Groundwater condition, recharge, source density and availability of water at the village level.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-faucet"></i>
+                    </div>
+                    <h3>Infrastructure</h3>
+                    <span class="pillar-meta">Weight: 0.20 (9 indicators)</span>
+                    <p class="pillar-desc">Coverage, storage, reliability and physical condition of water-supply infrastructure.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Water Quality</h3>
+                    <span class="pillar-meta">Weight: 0.15 (4 indicators)</span>
+                    <p class="pillar-desc">Chemical and biological safety of drinking water and its stability across seasons.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-cloud-sun-rain"></i>
+                    </div>
+                    <h3>Climate</h3>
+                    <span class="pillar-meta">Weight: 0.15 (7 indicators)</span>
+                    <p class="pillar-desc">Rainfall variability, drought exposure, warming trend and mitigation of water-related emissions.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Socio-economic</h3>
+                    <span class="pillar-meta">Weight: 0.20 (6 indicators)</span>
+                    <p class="pillar-desc">Household income, dependency on shared water resources, migration and community governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Resilience Classification Section -->
+    <section class="classification-section" style="padding: 4rem 0;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 1rem; color: var(--secondary-color);">Water Resilience Classification</h2>
+            <p style="text-align: center; max-width: 750px; margin: 0 auto 2rem; color: var(--light-text);">
+                Realm Scores (RS) and the final Composite VWRI are classified across five distinct resilience tiers:
+            </p>
+            <div class="vwri-table-wrapper" style="max-width: 800px; margin: 0 auto;">
+                <table class="vwri-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Realm Score Range (RS) / Composite VWRI</th>
+                            <th style="width: 50%;">Water Resilience Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>$\text{RS} \le 1.5$</td>
+                            <td><span class="resilience-badge badge-very-low">Very Low resilience</span></td>
+                        </tr>
+                        <tr>
+                            <td>$1.5 < \text{RS} \le 2.5$</td>
+                            <td><span class="resilience-badge badge-low">Low resilience</span></td>
+                        </tr>
+                        <tr>
+                            <td>$2.5 < \text{RS} \le 3.5$</td>
+                            <td><span class="resilience-badge badge-moderate">Moderate resilience</span></td>
+                        </tr>
+                        <tr>
+                            <td>$3.5 < \text{RS} \le 4.5$</td>
+                            <td><span class="resilience-badge badge-high">High resilience</span></td>
+                        </tr>
+                        <tr>
+                            <td>$\text{RS} > 4.5$</td>
+                            <td><span class="resilience-badge badge-very-high">Very High resilience</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Assess Your Village's Water Resilience?</h2>
+            <p>An interactive online calculator implementing this framework is available to calculate all Realm and Composite scores.</p>
+            <a href="calculator.html" class="cta-button primary">Launch VWRI Calculator</a>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section brand-section">
+                    <h3>Village Water Resilience</h3>
+                    <p class="footer-tagline">W4C — Water for Communities | A Composite Framework for Assessing Village-Level Water Resilience.</p>
+                    <p class="footer-affil"><i class="fas fa-university"></i> Department of Civil Engineering, IIT Gandhinagar</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Framework</h3>
+                    <ul class="footer-links">
+                        <li><a href="framework.html">Five Realms</a></li>
+                        <li><a href="methodology.html">34 Indicators</a></li>
+                        <li><a href="methodology.html#benchmarks">Benchmark Scales</a></li>
+                        <li><a href="calculator.html">VWRI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About VWRI</a></li>
+                        <li><a href="benefits.html">Key Benefits</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="team.html">Research Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact-section">
+                    <h3>Connect With Us</h3>
+                    <p class="footer-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:pranabm@iitgn.ac.in">pranabm@iitgn.ac.in</a></p>
+                    <p class="footer-contact-item"><i class="fas fa-location-dot"></i> <span>Gandhinagar, Gujarat, India</span></p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/indra-mani-tripathi-08b96418b/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://scholar.google.com/citations?hl=en&user=vZAHrksAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="https://www.researchgate.net/profile/Indra-Tripathi" target="_blank" rel="noopener noreferrer" title="ResearchGate" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Village Water Resilience Index (VWRI). Developed at IIT Gandhinagar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
